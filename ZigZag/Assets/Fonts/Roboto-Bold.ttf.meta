@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: db90b7581ced62642adb06ac6f816100
+guid: a265eb544828f6f46a06d434cfcdf8be
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,10 +8,12 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Truly Madly Dpad
+  fontName: Roboto
   fontNames:
-  - Truly Madly Dpad
-  fallbackFontReferences: []
+  - Roboto
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 929d40b463d1fe841b7c43dcac0815fc, type: 3}
+  - {fileID: 12800000, guid: d01961fb8a51b0e46bfa192072bec323, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
