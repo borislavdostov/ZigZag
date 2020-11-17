@@ -54,15 +54,9 @@ public class UiManager : MonoBehaviour
         scoreText.GetComponent<Animator>().Play("scoreTextDissapear");
     }
 
-    public void Reset()
+    public void Restart()
     {
-        //We load scene by its index, we have only 1 scene, so the index is 0
-        SceneManager.LoadScene(0);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        //We load our current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

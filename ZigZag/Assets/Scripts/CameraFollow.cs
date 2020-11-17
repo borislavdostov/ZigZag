@@ -1,27 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject ball;
-    Vector3 offset;
-    public float lerpRate;
-    public bool gameOver;
-
-    // Start is called before the first frame update
-    // Use this for initialization
-    void Start()
-    {
-        //offset is the distance between the camera and the ball
-        offset = ball.transform.position - transform.position;
-        gameOver = false;
-    }
+    public Transform ball;
+    public Vector3 offset;
 
     // Update is called once per frame
     void Update()
     {
-        if (!gameOver)
+        //If the ball is on the ground
+        if (ball.position.y > 1)
         {
             Follow();
         }
@@ -29,13 +17,7 @@ public class CameraFollow : MonoBehaviour
 
     void Follow()
     {
-        //current position(from)
-        Vector3 pos = transform.position;
-        //target position(to)
-        Vector3 targetPos = ball.transform.position - offset;
-        //moves on from one value to another value with rate(lerpRate)
-        //Time.deltatime - helps to run same on every computer
-        pos = Vector3.Lerp(pos, targetPos, lerpRate * Time.deltaTime);
-        transform.position = pos;
+        //The position of the camera is the position of the ball plus offset
+        transform.position = ball.position + offset;
     }
 }

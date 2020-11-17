@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -21,12 +19,6 @@ public class ScoreManager : MonoBehaviour
     {
         score = 0;
         PlayerPrefs.SetInt("score", score);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void IncrementScore()

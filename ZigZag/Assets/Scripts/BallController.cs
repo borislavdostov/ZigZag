@@ -2,31 +2,24 @@
 
 public class BallController : MonoBehaviour
 {
+    public Rigidbody rb;
     public GameObject particle;
 
     //Even if speed field is private, with "[SerializeField]" we can show it in Ball's components
     [SerializeField]
     private float speed;
-    bool started;
-    bool gameOver;
-
-    Rigidbody rb;
-
-    void Awake()
-    {
-        //GetComponent<>() can get every component in the current GameObject
-        rb = GetComponent<Rigidbody>();
-    }
+    private bool gameStarted;
+    private bool gameOver;
 
     // Start is called before the first frame update
     // Use this for initialization
     void Start()
     {
-        started = false;
+        gameStarted = false;
         gameOver = false;
     }
 
-    // Update is called once per frame
+    //We are using FixedUpdate method, when we are changing physics physics.
     void Update()
     {
         //HACK
@@ -42,17 +35,14 @@ public class BallController : MonoBehaviour
         //    rb.velocity = new Vector3(0, 0, speed);
         //}
 
-        if (!started)
+        if (Input.GetMouseButtonDown(0) && !gameStarted)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                //Set velocity to x
-                rb.velocity = new Vector3(speed, 0, 0);
-                started = true;
+            //Set velocity to x
+            rb.velocity = new Vector3(speed, 0, 0);
+            gameStarted = true;
 
-                //We are calling StartGame() method from GameManager
-                GameManager.instance.StartGame();
-            }
+            //We are calling StartGame() method from GameManager
+            GameManager.instance.StartGame();
         }
 
         //This will draw the ray
@@ -66,11 +56,6 @@ public class BallController : MonoBehaviour
             //This will cause the ball to fall down
             rb.constraints = RigidbodyConstraints.None;
             rb.velocity = new Vector3(0, -25f, 0);
-
-            //The main camera
-            Camera.main.GetComponent<CameraFollow>().gameOver = true;
-            SpotLightFollow.instance.GameOver();
-
             //We are calling GameOver() method from GameManager
             GameManager.instance.GameOver();
         }
@@ -102,7 +87,7 @@ public class BallController : MonoBehaviour
     {
         if (col.gameObject.tag == "Diamond")
         {
-            //We can get the instance of Instantiate method, but we must call "as GameObject" at the end.
+            //Instantiate method returns the object that we create
             GameObject part = Instantiate(particle, col.gameObject.transform.position, Quaternion.identity);
             //Destroying the diamond
             Destroy(col.gameObject);
