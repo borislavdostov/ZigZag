@@ -30,7 +30,7 @@ public class UiManager : MonoBehaviour
     void Start()
     {
         //Set the high score text at the start menu
-        highScore1.text = "HIGH SCORE: " + PlayerPrefs.GetInt("highScore");
+        highScore1.text = "HIGH SCORE: " + ScoreManager.instance.GetHighScore();
     }
 
     public void GameStart()
@@ -45,9 +45,9 @@ public class UiManager : MonoBehaviour
     public void GameOver()
     {
         //Set the score text
-        score.text = PlayerPrefs.GetInt("score").ToString();
+        score.text = ScoreManager.instance.GetScore().ToString();
         //Set the high score text
-        highScore2.text = PlayerPrefs.GetInt("highScore").ToString();
+        highScore2.text = ScoreManager.instance.GetHighScore().ToString();
         //When we set active this panel, his animation will call automatically
         gameOverPanel.SetActive(true);
         //Score text dissapear

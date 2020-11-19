@@ -2,8 +2,8 @@
 
 public class BallController : MonoBehaviour
 {
-    public Rigidbody rb;
     public GameObject particle;
+    private Rigidbody rb;
 
     //Even if speed field is private, with "[SerializeField]" we can show it in Ball's components
     [SerializeField]
@@ -15,6 +15,7 @@ public class BallController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         gameStarted = false;
         gameOver = false;
     }
@@ -85,7 +86,7 @@ public class BallController : MonoBehaviour
     //When this gameObject(Ball) enters a trigger, if the trigger is diamond, the diamont is destroyed.
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Diamond")
+        if (col.CompareTag("Diamond"))
         {
             //Instantiate method returns the object that we create
             GameObject part = Instantiate(particle, col.gameObject.transform.position, Quaternion.identity);

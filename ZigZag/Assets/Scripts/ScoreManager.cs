@@ -6,6 +6,9 @@ public class ScoreManager : MonoBehaviour
     public int score;
     public int highScore;
 
+    private const string Score = "score";
+    private const string HighScore = "highScore";
+
     private void Awake()
     {
         if (instance == null)
@@ -18,7 +21,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         score = 0;
-        PlayerPrefs.SetInt("score", score);
+        PlayerPrefs.SetInt(Score, score);
     }
 
     void IncrementScore()
@@ -42,18 +45,28 @@ public class ScoreManager : MonoBehaviour
     {
         //Stops incrementing the score
         CancelInvoke("IncrementScore");
-        PlayerPrefs.SetInt("score", score);
+        PlayerPrefs.SetInt(Score, score);
 
-        if (PlayerPrefs.HasKey("highScore"))
+        if (PlayerPrefs.HasKey(HighScore))
         {
-            if (score > PlayerPrefs.GetInt("highScore"))
+            if (score > GetHighScore())
             {
-                PlayerPrefs.SetInt("highScore", score);
+                PlayerPrefs.SetInt(HighScore, score);
             }
         }
         else
         {
-            PlayerPrefs.SetInt("highScore", score);
+            PlayerPrefs.SetInt(HighScore, score);
         }
+    }
+
+    public int GetScore()
+    {
+        return PlayerPrefs.GetInt(Score);
+    }
+
+    public int GetHighScore()
+    {
+        return PlayerPrefs.GetInt(HighScore);
     }
 }

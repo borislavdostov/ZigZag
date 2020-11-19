@@ -8,7 +8,7 @@ public class TriggerChecker : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         //If the platform spawn diamond, we get the instance of that diamond
-        if (col.gameObject.CompareTag("Diamond"))
+        if (col.CompareTag("Diamond"))
         {
             diamond = col.gameObject;
         }
@@ -19,11 +19,10 @@ public class TriggerChecker : MonoBehaviour
     void OnTriggerExit(Collider col)
     {
         //Get the tag of the collider and check if its the ball
-        if (col.gameObject.tag == "Ball")
+        if (col.CompareTag("Ball"))
         {
             //Call function after a time (name of the function, seconds)
             Invoke("FallDown", 0.5f);
-            FallDown();
 
             //If we have diamond on the platform, we make the diamond falls
             if (diamond != null)

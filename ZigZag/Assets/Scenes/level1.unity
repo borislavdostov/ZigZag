@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 1270665468}
   - component: {fileID: 1270665472}
   - component: {fileID: 1270665473}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -833,7 +833,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b2655d114f9a74cad35617bc1ee2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1270665472}
   particle: {fileID: 4367913389088549852, guid: 50208a76c048b4c46baa92a3a7c36260,
     type: 3}
   speed: 8

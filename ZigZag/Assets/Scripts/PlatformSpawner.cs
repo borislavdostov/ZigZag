@@ -7,9 +7,9 @@ public class PlatformSpawner : MonoBehaviour
     public GameObject platform;
     public GameObject diamond;
 
-    Vector3 lastPos;
-    float size;
     public bool gameOver;
+    private Vector3 lastPos;
+    private float size;
 
     void Awake()
     {
